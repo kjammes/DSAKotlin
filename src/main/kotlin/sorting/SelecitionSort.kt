@@ -1,20 +1,18 @@
 package sorting
 
-import java.util.*
-
 fun main() {
     val nums = intArrayOf(3,4,1,7,9,1,33,4,1,575)
-    bubbleSort(nums)
+    selectionSort(nums)
     println(nums.contentToString())
 }
 
-fun bubbleSort(nums: IntArray) {
+fun selectionSort(nums: IntArray) {
     for (i in nums.indices) {
-        for (j in 0 until nums.size-1) {
-            if(nums[j] > nums[j+1]) {
+        for (j in i+1 until nums.size-1) {
+            if(nums[j] < nums[i]) {
                 val temp = nums[j]
-                nums[j] = nums[j+1]
-                nums[j+1] = temp
+                nums[j] = nums[i]
+                nums[i] = temp
             }
         }
         println(nums.contentToString())
