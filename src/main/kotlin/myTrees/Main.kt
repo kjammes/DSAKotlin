@@ -13,7 +13,15 @@ fun main() {
     bst.printTree()
     println(bst.lookup(9))
     println(bst.lookup(4))
+    println("BFS traversal for 5 " + bst.breadthFirstSearch(5))
+    println("BFS recursion traversal for 5 " + bst.bfsR(5))
+    println("DFS traversal for 5 " + bst.depthFirstSearch(5))
     println("Remove success for 5 " + bst.remove(5))
+    println("BST traversal for 5 " + bst.breadthFirstSearch(5))
     println("Remove success for 5 again " + bst.remove(5))
+
+    println("Inorder traversal = ${bst.inorder(bst.getRootRef(), ArrayList<Int?>())}")
+    println("Pre order traversal = ${bst.preOrder(bst.getRootRef(), ArrayList<Int?>())}")
+    println("Post order traversal = ${bst.postOrder(bst.getRootRef(), ArrayList<Int?>())}")
 
 }
