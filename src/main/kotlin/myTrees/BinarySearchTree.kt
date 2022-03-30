@@ -209,20 +209,60 @@ class BinarySearchTree {
     fun preOrder(node: Node?, result: ArrayList<Int?>): ArrayList<Int?> {
         result.add(node?.value)
         if (node?.left != null) {
-            inorder(node.left, result)
+            preOrder(node.left, result)
         }
         if (node?.right != null) {
-            inorder(node.right, result)
+            preOrder(node.right, result)
         }
         return result
     }
 
+    fun preOrderR(node: Node?) {
+
+        if(node == null)
+            return
+
+        val stack = ArrayList<Node?>()
+        stack.add(node)
+        while (stack.isNotEmpty()) {
+            var cur = stack.removeAt(stack.size-1)
+            println(cur?.value)
+            if(cur?.left != null)
+                stack.add(cur.left)
+            if(cur?.right != null)
+                stack.add(cur.right)
+        }
+    }
+
+    fun inOrderR(node: Node?) {
+        if(node == null)
+            return
+
+        var cur = node
+        val stack = ArrayList<Node?>()
+        stack.add(cur)
+        while (stack.size > 0 && cur != null) {
+
+            while (cur != null) {
+                stack.add(cur)
+                cur = cur?.left
+            }
+
+            cur = stack.removeAt(stack.size-1)
+
+            println(cur?.value)
+
+            cur = cur?.right
+
+        }
+    }
+
     fun postOrder(node: Node?, result: ArrayList<Int?>): ArrayList<Int?> {
         if (node?.left != null) {
-            inorder(node.left, result)
+            postOrder(node.left, result)
         }
         if (node?.right != null) {
-            inorder(node.right, result)
+            postOrder(node.right, result)
         }
         result.add(node?.value)
         return result
